@@ -1,0 +1,25 @@
+.cityInput {
+    .MuiSelect-root {
+        width: 18vw;
+    }
+}
+
+.cityInput__select {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+
+@media only screen and (max-width: 700px) {
+    .cityInput__select {
+        flex-direction: column;
+
+        .MuiSelect-root {
+            width: 100%;
+        }
+
+        .MuiFormControl-root {
+            margin-top: 5%;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-image: linear-gradient(
+        to right,
+        #4c98f8,
+        #42a3fb,
+        #3daefd,
+        #40b7fd,
+        #49c1fd
+    );
+    padding: 0 2% 0 2%;
+
+    img {
+        height: 8vh;
+    }
+
+    h4 {
+        color: #fff;
+    }
+}

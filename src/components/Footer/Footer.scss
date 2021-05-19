@@ -1,0 +1,21 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+        line-height: 1%;
+    }
+
+    a {
+        color: #4c98f8;
+        text-decoration: none;
+
+        :hover {
+            text-decoration: wavy;
+        }
+    }
+}
+
+.footer__giops {
+    height: 50px;
+}

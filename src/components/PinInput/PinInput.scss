@@ -1,0 +1,27 @@
+.pinInput {
+    display: flex;
+    align-items: center;
+
+    .MuiInputBase-root {
+        width: 37vw !important;
+    }
+
+    button {
+        padding: 4%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .pinInput {
+        flex-direction: column;
+
+        .MuiInputBase-root {
+            width: 100% !important;
+        }
+
+        button {
+            margin-top: 5%;
+            padding: 4%;
+        }
+    }
+}
