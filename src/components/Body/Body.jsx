@@ -25,7 +25,7 @@ export default function Body() {
                     <CityInput />
                 </TabPanel> */}
                 <Switch>
-                    <Route path="/vaccines/:country/city/:cityId">
+                    <Route path="/vaccines/:country/:city/:cityId">
                         <VacTable />
                     </Route>
 
