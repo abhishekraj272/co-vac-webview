@@ -25,15 +25,17 @@ export default function getSessions(pincode, cityID) {
 
         url.searchParams.append('date', getTodaysDate());
 
-        axios.defaults.timeout = 1000;
-
-        const resp = await axios.get(url);
-
-        if (resp.status === 200 && resp.data.centers.length > 0) {
-            dispatch(addCenters(resp.data.centers));
-        } else {
+        try {
+            const resp = await axios.get(url);
+            if (resp.status === 200 && resp.data.centers.length > 0) {
+                dispatch(addCenters(resp.data.centers));
+                return;
+            }
+        } catch (error) {
             dispatch(toggleError());
+            return;
         }
+        dispatch(toggleError());
     }
 
 }

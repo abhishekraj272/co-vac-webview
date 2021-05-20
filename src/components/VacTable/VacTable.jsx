@@ -33,13 +33,11 @@ export default function VacTable() {
 
 
     useEffect(() => {
-
         if (cityId > 10000) {
             dispatch(getSessions(cityId, undefined));
         } else {
             dispatch(getSessions(undefined, cityId));
         }
-
     }, [dispatch, cityId]);
 
     const state = useSelector(state => state);
@@ -64,10 +62,10 @@ export default function VacTable() {
             <Table stickyHeader className={classes.table} aria-label="table">
                 <TableHead>
                     <TableRow>
-                        <TableCell variant='head'>Center Name</TableCell>
+                        <TableCell variant='head' align="center">Center Name</TableCell>
                         {
                             dates.map((date, index) => (
-                                <TableCell key={index} align="right">{date}</TableCell>
+                                <TableCell key={index} align="center">{date}</TableCell>
                             ))
                         }
                     </TableRow>
@@ -88,12 +86,13 @@ export default function VacTable() {
                                                 <Chip color="primary" component="a" href="https://selfregistration.cowin.gov.in/" clickable label={center.sessions[i]?.available_capacity} />
                                                 : <Chip size='small' label="Booked" color="secondary" />
                                             )
-                                            : "-"}
+                                            : <Chip size='small' label="No Data" variant="outlined" />}
                                         < br />
                                         {
                                             center.sessions[i] ? <Chip size='small' style={{ margin: '3% 0 3% 0' }} label={center.sessions[i]?.vaccine} color="primary" variant="outlined"
                                             /> : ""
                                         }
+                                        <br />
                                         {
                                             center.sessions[i] ? `Age ${center.sessions[i]?.min_age_limit}+ ` : ""
                                         }

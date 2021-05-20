@@ -52,7 +52,8 @@ const reducer = (state = INITIAL_STATE, action) => {
         case actionTypes.TOGGLE_ERROR:
             return {
                 ...state,
-                error: !state.error
+                error: !state.error,
+                loading: !state.loading
             }
         default:
             return state;

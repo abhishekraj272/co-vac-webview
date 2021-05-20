@@ -6,7 +6,7 @@ function dateFormatter(addDate = 0) {
     const date = d.getDate() + addDate;
     const monthIndex = d.getMonth();
     const monthName = months[monthIndex];
-    return `${date} ${monthName} ${year}`;
+    return `${date} ${monthName}`;
 };
 
 export const get7Dates = () => {

@@ -17,7 +17,7 @@ export default function Body() {
 
     return (
         <div className="body">
-            <Container maxWidth="md">
+            <Container maxWidth="lg">
                 {/* <TabPanel value={currentTab} index={0}>
                     <PinInput />
                 </TabPanel>

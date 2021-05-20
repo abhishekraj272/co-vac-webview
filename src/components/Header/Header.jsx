@@ -6,7 +6,7 @@ export default function Header() {
         <div className="header">
             {/* <img src="" alt="Machaao Logo" /> */}
 
-            <h4>MessengerX.io/Co-Vac</h4>
+            <h3>Co-Vac</h3>
         </div>
     )
 }
