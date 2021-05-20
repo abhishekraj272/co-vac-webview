@@ -29,7 +29,7 @@ export default function getSessions(pincode, cityID) {
 
         const resp = await axios.get(url);
 
-        if (resp.status === 200) {
+        if (resp.status === 200 && resp.data.centers.length > 0) {
             dispatch(addCenters(resp.data.centers));
         } else {
             dispatch(toggleError());
