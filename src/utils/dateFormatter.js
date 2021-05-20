@@ -2,7 +2,6 @@ import { months } from "../constants";
 
 function dateFormatter(addDate = 0) {
     const d = new Date();
-    const year = d.getFullYear();
     const date = d.getDate() + addDate;
     const monthIndex = d.getMonth();
     const monthName = months[monthIndex];
