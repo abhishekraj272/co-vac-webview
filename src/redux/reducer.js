@@ -7,7 +7,9 @@ const INITIAL_STATE = {
         states: [],
         cities: []
     },
-    centers: []
+    centers: [],
+    loading: true,
+    error: false
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -39,9 +41,19 @@ const reducer = (state = INITIAL_STATE, action) => {
         case actionTypes.ADD_CENTERS:
             return {
                 ...state,
-                centers: action.payload
+                centers: action.payload,
+                loading: false
             }
-
+        case actionTypes.TOGGLE_LOADING:
+            return {
+                ...state,
+                loading: !state.loading
+            }
+        case actionTypes.TOGGLE_ERROR:
+            return {
+                ...state,
+                error: !state.error
+            }
         default:
             return state;
     }

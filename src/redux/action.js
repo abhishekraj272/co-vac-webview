@@ -24,3 +24,11 @@ export const addCenters = (centers) => ({
     type: actionTypes.ADD_CENTERS,
     payload: centers
 });
+
+export const toggleLoading = () => ({
+    type: actionTypes.TOGGLE_LOADING,
+});
+
+export const toggleError = () => ({
+    type: actionTypes.TOGGLE_ERROR,
+});

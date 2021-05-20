@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,11 +7,15 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { useSelector } from 'react-redux';
-import { months } from '../../constants';
-import { Chip } from '@material-ui/core';
+import getSessions from '../../api/getSessions';
+import { useDispatch, useSelector } from 'react-redux';
+import { Chip, CircularProgress } from '@material-ui/core';
+import { useParams } from 'react-router-dom';
+import { get7Dates } from '../../utils/dateFormatter';
+
 
 import './VacTable.scss';
+import Error from '../Error/Error';
 
 const useStyles = makeStyles({
     table: {
@@ -20,28 +24,40 @@ const useStyles = makeStyles({
     },
 });
 
-function dateFormatter(addDate = 0) {
-    const d = new Date();
-    const year = d.getFullYear();
-    const date = d.getDate() + addDate;
-    const monthIndex = d.getMonth();
-    const monthName = months[monthIndex];
-    return `${date} ${monthName} ${year}`;
-}
-
-const get7Dates = () => {
-    const arr = []
-    for (let index = 0; index < 7; index++) {
-        arr.push(dateFormatter(index));
-    }
-    return arr;
-}
-
 export default function VacTable() {
     const classes = useStyles();
 
-    const centers = useSelector(state => state.centers);
+    const dispatch = useDispatch();
+
+    const { country, cityId } = useParams();
+
+
+    useEffect(() => {
+
+        if (cityId > 10000) {
+            dispatch(getSessions(cityId, undefined));
+        } else {
+            dispatch(getSessions(undefined, cityId));
+        }
+
+    }, [dispatch, cityId]);
+
+    const state = useSelector(state => state);
     const dates = get7Dates();
+
+    if (country.toLowerCase() !== 'india') {
+        return <Error type={2} />
+    }
+
+    if (state.error) {
+        return <Error />
+    }
+
+    if (state.loading) {
+        return <center><CircularProgress thickness={3} /></center>
+    }
+
+    const centers = state.centers;
 
     return (
         <TableContainer component={Paper} style={{ maxHeight: '70vh' }}>
@@ -54,7 +70,6 @@ export default function VacTable() {
                                 <TableCell key={index} align="right">{date}</TableCell>
                             ))
                         }
-
                     </TableRow>
                 </TableHead>
                 <TableBody>
