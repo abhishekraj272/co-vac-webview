@@ -5,7 +5,7 @@ current_date = datetime.today().strftime('%Y-%m-%d')
 
 
 def get_sitemap_url(url):
-    return f'<url><loc>{url}</loc><lastmod>{current_date}</lastmod></url>'
+    return f'<url><loc>{url}</loc><lastmod>{current_date}</lastmod><changefreq>hourly</changefreq></url>'
 
 
 districts = []
